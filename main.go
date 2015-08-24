@@ -54,8 +54,9 @@ func welcomeUser(user string, api *slack.Client) {
 Hi! Welcome to the Slack group! When you have a moment, head over to the #intros channel to introduce yourself to everyone here. You should mention your name, your org + position, and any expertise you have that might be helpful to the group.
 `
 	params := slack.PostMessageParameters{
-		Username: SEND_AS_USER,
-		AsUser:   true,
+		Username:  SEND_AS_USER,
+		AsUser:    true,
+		LinkNames: 1,
 	}
 	_, timestamp, err := api.PostMessage(channelID, text, params)
 	if err != nil {
