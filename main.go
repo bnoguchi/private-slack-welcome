@@ -7,6 +7,7 @@ import (
 )
 
 var SLACK_TOKEN = os.Getenv("SLACK_TOKEN")
+var SEND_AS_USER = os.Getenv("SEND_AS_USER")
 
 func main() {
 	api := slack.New(SLACK_TOKEN)
@@ -52,7 +53,10 @@ func welcomeUser(user string, api *slack.Client) {
 	text := `
 Hi! Welcome to the Slack group! When you have a moment, head over to the #intros channel to introduce yourself to everyone here. You should mention your name, your org + position, and any expertise you have that might be helpful to the group.
 `
-	params := slack.PostMessageParameters{}
+	params := slack.PostMessageParameters{
+		Username: SEND_AS_USER,
+		AsUser:   true,
+	}
 	_, timestamp, err := api.PostMessage(channelID, text, params)
 	if err != nil {
 		fmt.Printf("Error: %s\n", err)
