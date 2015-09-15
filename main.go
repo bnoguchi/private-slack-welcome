@@ -51,7 +51,7 @@ func welcomeUser(user string, api *slack.Client) {
 	}
 	defer api.CloseIMChannel(channelID)
 	text := `
-Hi! Welcome to the Slack group! When you have a moment, head over to the #intros channel to introduce yourself to everyone here. You should mention your name, your org + position, and any expertise you have that might be helpful to the group.
+Welcome to the Slack group! When you have a moment, head over to the #intros channel to introduce yourself to everyone here. We're making introducing yourself a requirement of being a part of the group. We want people to know they can reach out to a community of diverse experts on here to ask any questions or to engage in fruitful conversations. You should mention your name, what you do, and any expertise you have that might be helpful to the group. Thanks, and looking forward to having you here!
 `
 	params := slack.PostMessageParameters{
 		Username:  SEND_AS_USER,
